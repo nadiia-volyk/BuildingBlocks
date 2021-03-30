@@ -19,12 +19,15 @@ namespace FloorsByLevels
             // Exract level perimeters from model
             var levels = new List<LevelPerimeter>();
             inputModels.TryGetValue("Levels", out var model);
+            //model.Elements.Values.ToList().ForEach(element => Console.WriteLine(element.GetType().ToString()));
             if (model == null || model.AllElementsOfType<LevelPerimeter>().Count() == 0)
             {
                 throw new ArgumentException("No LevelPerimeters found.");
             }
 
             var floorMaterial = new Material("Concrete", new Color(0.34, 0.34, 0.34, 1.0), 0.3, 0.3);
+
+            Console.WriteLine(levels.Count);
 
             levels.AddRange(model.AllElementsOfType<LevelPerimeter>());
 
