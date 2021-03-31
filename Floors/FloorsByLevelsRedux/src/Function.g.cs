@@ -13,15 +13,15 @@ using System.Reflection;
 using System.Threading.Tasks;
 
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
-namespace FloorsByLevels
+namespace FloorsByLevelsRedux
 {
     public class Function
     {
         // Cache the model store for use by subsequent
         // executions of this lambda.
-        private IModelStore<FloorsByLevelsInputs> store;
+        private IModelStore<FloorsByLevelsReduxInputs> store;
 
-        public async Task<FloorsByLevelsOutputs> Handler(FloorsByLevelsInputs args, ILambdaContext context)
+        public async Task<FloorsByLevelsReduxOutputs> Handler(FloorsByLevelsReduxInputs args, ILambdaContext context)
         {
             // Preload dependencies (if they exist),
             // so that they are available during model deserialization.
@@ -61,10 +61,10 @@ namespace FloorsByLevels
 
             if(this.store == null)
             {
-                this.store = new S3ModelStore<FloorsByLevelsInputs>(RegionEndpoint.USWest1);
+                this.store = new S3ModelStore<FloorsByLevelsReduxInputs>(RegionEndpoint.USWest1);
             }
 
-            var l = new InvocationWrapper<FloorsByLevelsInputs,FloorsByLevelsOutputs>(store, FloorsByLevels.Execute);
+            var l = new InvocationWrapper<FloorsByLevelsReduxInputs,FloorsByLevelsReduxOutputs>(store, FloorsByLevelsRedux.Execute);
             var output = await l.InvokeAsync(args);
             return output;
         }
