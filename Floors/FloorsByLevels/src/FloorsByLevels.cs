@@ -36,7 +36,7 @@ namespace FloorsByLevels
             inputModels.TryGetValue("Core", out var coreModel);
             if (coreModel != null)
             {
-                var voidMasses = coreModel.AllElementsOfType<Mass>().Where(mass => mass.Name.ToLower().Contains("void"));
+                var voidMasses = coreModel.AllElementsOfType<Mass>().Where(mass => mass.Name != null && mass.Name.ToLower().Contains("void"));
                 voidProfiles.AddRange(voidMasses.Select(mass => mass.Profile.Perimeter.Project(new Plane(Vector3.Origin, Vector3.ZAxis))));
             }
 

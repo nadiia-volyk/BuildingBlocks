@@ -1,0 +1,29 @@
+{
+  "$schema": "https://hypar.io/Schemas/Function.json",
+  "id": "663eba4e-1ffe-481b-bad8-f28314a55ed1",
+  "name": "Create Fake Level Perimeters",
+  "description": "The CreateFakeLevelPerimeters function.",
+  "language": "C#",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "Count": {
+        "type": "number",
+        "description": "Number of elements to create",
+        "minimum": 1.0,
+        "maximum": 10.0,
+        "multipleOf": 1.0,
+        "$hyparUnitType": "length"
+      }
+    }
+  },
+  "outputs": [],
+  "element_types": [
+    "https://raw.githubusercontent.com/hypar-io/Schemas/master/LevelPerimeter.json",
+    "https://prod-api.hypar.io/schemas/LevelVolume"
+  ],
+  "model_output": "Levels",
+  "repository_url": "https://github.com/hypar-io/function",
+  "source_file_key": null,
+  "preview_image": null
+}

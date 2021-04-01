@@ -10,7 +10,7 @@ using Xunit.Abstractions;
 using System;
 using System.Collections.Generic;
 
-namespace FloorsByLevelsRedux.Tests
+namespace CreateFakeLevelPerimeters.Tests
 {
     public class FunctionTests
     {
